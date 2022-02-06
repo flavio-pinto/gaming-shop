@@ -15,6 +15,10 @@ nav, footer {
     background-color: #00000080;
 }
 
+#pagCarr {
+    pointer-events: none;
+}
+
 /* PAGINA DI LOGIN */
 #idLogin{
     width: 20em;
@@ -24,8 +28,8 @@ nav, footer {
     box-shadow: 4px 4px 2px grey;
 }
 
-button {
-    background-color: greenyellow;
+#paginaLogin {
+    height: 35em;
 }
 
 #idLogin #entraBtn{

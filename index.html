@@ -14,7 +14,7 @@
 <body>
 
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-md navbar-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Welcome on <img id="logo" class="img-fluid rounded" style="width: 20em;"
               src="./assets/images/Logo.png" alt="Logo"></a>
@@ -28,10 +28,7 @@
               <a class="nav-link active" aria-current="page" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Games</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="carrello.html">Carrello</a>
+              <a id="pagCarr" class="nav-link" href="carrello.html">Carrello</a>
             </li>
           </ul>
         </div>
@@ -54,8 +51,8 @@
               <input type="text" id="emailCamp" name="email" class="rounded"><small class="d-block mb-4 text-danger"></small>
               <label for="password">Inserisci la tua password</label>
               <input type="password" id="passwordCamp" name="password" class="rounded"><small class="d-block mb-4 text-danger"></small>
-              <button id="entraBtn" class="rounded mb-4">Entra</button>
-              <button id="regBtn" class="rounded">Clicca qui per registrarti alla nostra Newsletter</button>
+              <button id="entraBtn" class="btn-primary rounded mb-4">Entra</button>
+              <button id="regBtn" class="btn-primary rounded">Clicca qui per registrarti alla nostra Newsletter</button>
             </div>
           </div>
           <div class="col-md-6">
@@ -70,7 +67,7 @@
         <div class="row mb-4">
           <div id="ricerca">
             <input class="rounded" type="text" id="barraRicerca">
-            <button class="rounded" type="button" id="bottoneRicerca">Cerca</button>
+            <button class="btn-primary rounded" type="button" id="bottoneRicerca">Cerca</button>
           </div>
         </div>
         <div id="listaRisultati" class="row justify-content-center">

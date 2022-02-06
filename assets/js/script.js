@@ -1,20 +1,20 @@
 //inizializzo variabili per il pulsante e per la barra di ricerca
 const paginaLogin = document.getElementById('paginaLogin');
 const paginaCatalogo = document.getElementById('paginaCatalogo');
-const inputMail = document.getElementById('emailCamp');
-const inputPassword = document.getElementById('passwordCamp');
 const entraBtn = document.getElementById('entraBtn');
-const regBtn =  document.getElementById('regBtn');
-let formControl = true;
+const regBtn = document.getElementById('regBtn');
 const barraRicerca = document.getElementById('barraRicerca');
 const bottoneRicerca = document.getElementById('bottoneRicerca');
 const patternEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const pagCarr =  document.getElementById('pagCarr');
+
 
 /* LOGIN */
-
 //evento login button
-entraBtn.addEventListener('click', function(){
-
+entraBtn.addEventListener('click', function () {
+  let formControl = true;
+  const inputMail = document.getElementById('emailCamp');
+  const inputPassword = document.getElementById('passwordCamp');
   //validazioni
   if (inputMail.value == '') {
     inputMail.nextSibling.innerHTML = (' * Questo campo è richiesto');
@@ -26,7 +26,6 @@ entraBtn.addEventListener('click', function(){
     inputMail.nextSibling.innerHTML = ("");
   }
 
-
   if (inputPassword.value == "") {
     inputPassword.nextSibling.innerHTML = " * Devi inserire una password";
     formControl = false;
@@ -37,14 +36,16 @@ entraBtn.addEventListener('click', function(){
     inputPassword.nextSibling.innerHTML = ("");
   }
 
-  if(formControl == true) {
+  if (formControl == true) {
     paginaLogin.classList.add('d-none');
     paginaCatalogo.classList.remove('d-none');
+    pagCarr.style.pointerEvents='auto';
   }
 });
 
+
 //registrazione newsletter
-regBtn.addEventListener('click', function(){
+regBtn.addEventListener('click', function () {
   alert('Gamer Epico, ti sei iscritto alla nostra Newsletter!')
 })
 
@@ -59,34 +60,20 @@ bottoneRicerca.addEventListener('click', function () {
   if (query !== '') {
     chiamataAPI(query);
 
-
   } else {
     alert('Hai inserito un campo vuoto! per favore, inserisci un valore per la ricerca');
     barraRicerca.focus();
   }
-
 });
-
 
 //chiamata api
 const baseUrl = 'https://api.rawg.io/api/games?';
 const apiKey = 'f64bc7603f7449829594541201921477';
 const url = `${baseUrl}${apiKey}`;
 
-/* async function fetchAPI() {
-  //memorizzo risposta
-  const response = await fetch('https://api.rawg.io/api/games?key=f64bc7603f7449829594541201921477');
-  let data = await response.json();
-  console.log(data);
-} */
-
-
 function chiamataAPI(query) {
-  // fetch(`${baseUrl}${apiKey}&page_size=24&search=${barraRicerca.value}`)
   fetch(`https://api.rawg.io/api/games?key=f64bc7603f7449829594541201921477&page_size=40&search=${query}`)
     .then(response => response.json())
-    //.then(data => console.log(data.response));
-    //.then(data => console.log(data.results[0].background_image));
     .then(function (data) {
       if (data.results.length > 0) {
         stampaGiochi(data.results);
@@ -96,7 +83,6 @@ function chiamataAPI(query) {
     });
 }
 
-//gioco.name.substr(0, 30)) + '...'
 function stampaGiochi(giochi) {
   //reference al contenitore dei risultati
   let listaRisultati = document.getElementById('listaRisultati');
@@ -106,8 +92,6 @@ function stampaGiochi(giochi) {
 
   //svuoto l'array
   pulisci(listaRisultati);
-
-  /* <img src="${gioco.background_image}" class="rounded" alt="immagine ${gioco.name}"> */
 
   //loop array risultati giochi
   for (let gioco of giochi) {
@@ -122,7 +106,7 @@ function stampaGiochi(giochi) {
             </div>
             <div class="card-footer">
               <small>€ ${randomNumber(19.99, 79.99).toFixed(2)}</small><br>
-              <a href="#" class="btn btn-primary">Acquista</a>
+              <button type="button" class="acquista btn btn-primary">Acquista</button>
             </div>
       </div>`;
   }
@@ -138,29 +122,6 @@ function stampaGiochi(giochi) {
     }
   }
 }
-
-let cardElements = document.getElementsByClassName('card');
-
-let platforms = document.getElementsByClassName('platform').innerHTML;
-
-/* for(let cardElement of cardElements) {
-  if(cardElement.find('platform').innerHTML = 'PlayStation') {
-    cardElement.style.backgroundColor = 'blue';
-  }
-  
-} */
-
-/* for (const platform of platforms) {
-  if (cardElement.innerHTML == 'Play Station') {
-    document.getElementsByClassName('card').style.backgroundColor = 'blue';
-  } else if (cardElement.innerHTML == 'Xbox') {
-    this.card.style.backgroundColor = 'green';
-  } else if (cardElement.innerHTML == 'Nintendo') {
-    this.card.style.backgroundColor = 'red';
-  }
-} */
-
-
 
 //funzione numeri random
 function randomNumber(min, max) { // min and max included 
