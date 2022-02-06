@@ -32,4 +32,4 @@ for (let card of cards) {
 }
 
 //stampa prezzo totale prodotti
-stampaPrezzo.innerText = 'Totale Carrello: €' + totalePrezzi;
+stampaPrezzo.innerText = 'Totale Carrello: €' + totalePrezzi.toFixed(2);

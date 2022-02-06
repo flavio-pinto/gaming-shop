@@ -145,6 +145,7 @@ function stampaGiochi(giochi) {
       let oggetto = new Game(card.querySelector('.card-title').innerHTML, card.querySelector('.platform').innerHTML, card.querySelector('small').innerHTML);
       carrello.push(oggetto);
       salvaCarrello();
+      alert(`Complimenti, hai aggiunto ${oggetto.titolo} al carrello!`)
       console.log(carrello);
     });
   }
