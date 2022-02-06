@@ -17,7 +17,7 @@ for (let prodotto of prodottiJson) {
             <p class="card-text platform">${prodotto.piattaforma}</p>
             <small class="prezzo">${prodotto.prezzo}</small>
           </div>
-    </div>`;
+      </div>`;
 }
 listaCarrello.insertAdjacentHTML('beforeend', carrellata);
 const cards = document.getElementsByClassName('card');
@@ -29,9 +29,6 @@ for (let card of cards) {
   } else if (card.querySelector('.platform').innerHTML == 'Nintendo') {
       card.classList.add('bkg-nintendo');
   }
-
-
-
 }
 
 //stampa prezzo totale prodotti
