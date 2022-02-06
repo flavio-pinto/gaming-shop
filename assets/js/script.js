@@ -1,6 +1,55 @@
 //inizializzo variabili per il pulsante e per la barra di ricerca
+const paginaLogin = document.getElementById('paginaLogin');
+const paginaCatalogo = document.getElementById('paginaCatalogo');
+const inputMail = document.getElementById('emailCamp');
+const inputPassword = document.getElementById('passwordCamp');
+const entraBtn = document.getElementById('entraBtn');
+const regBtn =  document.getElementById('regBtn');
+let formControl = true;
 const barraRicerca = document.getElementById('barraRicerca');
 const bottoneRicerca = document.getElementById('bottoneRicerca');
+const patternEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+/* LOGIN */
+
+//evento login button
+entraBtn.addEventListener('click', function(){
+
+  //validazioni
+  if (inputMail.value == '') {
+    inputMail.nextSibling.innerHTML = (' * Questo campo è richiesto');
+    formControl = false;
+  } else if (inputMail.value != '' && patternEmail.test(inputMail.value) == false) {
+    inputMail.nextSibling.innerHTML = (' * Devi inserire un indirizzo valido');
+    formControl = false;
+  } else {
+    inputMail.nextSibling.innerHTML = ("");
+  }
+
+
+  if (inputPassword.value == "") {
+    inputPassword.nextSibling.innerHTML = " * Devi inserire una password";
+    formControl = false;
+  } else if (inputPassword.value.length < 6) {
+    inputPassword.nextSibling.innerHTML = (" * Deve essere di almeno 6 caratteri");
+    formControl = false;
+  } else {
+    inputPassword.nextSibling.innerHTML = ("");
+  }
+
+  if(formControl == true) {
+    paginaLogin.classList.add('d-none');
+    paginaCatalogo.classList.remove('d-none');
+  }
+});
+
+//registrazione newsletter
+regBtn.addEventListener('click', function(){
+  alert('Gamer Epico, ti sei iscritto alla nostra Newsletter!')
+})
+
+
+/* CARICAMENTO GAMESHOP */
 
 chiamataAPI('');
 

@@ -51,11 +51,11 @@
           <div class="col-md-6" id="idLogin">
             <div class="text-center">
               <label for="email">Inserisci la tua mail</label>
-              <input type="text" name="email" class="rounded mb-4">
+              <input type="text" id="emailCamp" name="email" class="rounded"><small class="d-block mb-4 text-danger"></small>
               <label for="password">Inserisci la tua password</label>
-              <input type="password" name="password" class="rounded mb-4">
+              <input type="password" id="passwordCamp" name="password" class="rounded"><small class="d-block mb-4 text-danger"></small>
               <button id="entraBtn" class="rounded mb-4">Entra</button>
-              <button id="regBtn" class="rounded">Clicca qui per registrarti</button>
+              <button id="regBtn" class="rounded">Clicca qui per registrarti alla nostra Newsletter</button>
             </div>
           </div>
           <div class="col-md-6">
@@ -65,7 +65,7 @@
       </div>
     </section>
 
-    <section id="paginaCatalogo">
+    <section class="d-none" id="paginaCatalogo">
       <div class="container-fluid p-5 text-center" id="prodotti">
         <div class="row mb-4">
           <div id="ricerca">
