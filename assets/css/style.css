@@ -80,3 +80,8 @@ nav, footer {
         width: 5em!important;
     }
 }
+#stampaPrezzoTotale {
+    background-color: black;
+    width: 10em;
+    height: 5em;
+}

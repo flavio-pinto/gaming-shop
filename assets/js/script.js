@@ -6,8 +6,18 @@ const regBtn = document.getElementById('regBtn');
 const barraRicerca = document.getElementById('barraRicerca');
 const bottoneRicerca = document.getElementById('bottoneRicerca');
 const patternEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const pagCarr =  document.getElementById('pagCarr');
+const pagCarr = document.getElementById('pagCarr');
+//array carrello
+let carrello = [];
 
+//Creo Classe
+class Game {
+  constructor(_titolo, _piattaforma, _prezzo) {
+    this.titolo = _titolo;
+    this.piattaforma = _piattaforma;
+    this.prezzo = _prezzo;
+  }
+}
 
 /* LOGIN */
 //evento login button
@@ -15,7 +25,8 @@ entraBtn.addEventListener('click', function () {
   let formControl = true;
   const inputMail = document.getElementById('emailCamp');
   const inputPassword = document.getElementById('passwordCamp');
-  //validazioni
+
+  //validazione email
   if (inputMail.value == '') {
     inputMail.nextSibling.innerHTML = (' * Questo campo è richiesto');
     formControl = false;
@@ -26,6 +37,7 @@ entraBtn.addEventListener('click', function () {
     inputMail.nextSibling.innerHTML = ("");
   }
 
+  //validazione password
   if (inputPassword.value == "") {
     inputPassword.nextSibling.innerHTML = " * Devi inserire una password";
     formControl = false;
@@ -36,13 +48,13 @@ entraBtn.addEventListener('click', function () {
     inputPassword.nextSibling.innerHTML = ("");
   }
 
+  //controllo form
   if (formControl == true) {
     paginaLogin.classList.add('d-none');
     paginaCatalogo.classList.remove('d-none');
-    pagCarr.style.pointerEvents='auto';
+    pagCarr.style.pointerEvents = 'auto';
   }
 });
-
 
 //registrazione newsletter
 regBtn.addEventListener('click', function () {
@@ -52,8 +64,10 @@ regBtn.addEventListener('click', function () {
 
 /* CARICAMENTO GAMESHOP */
 
+//chiamata api iniziale per popolare la pagina
 chiamataAPI('');
 
+// evento click per ricerca query input
 bottoneRicerca.addEventListener('click', function () {
   let query = barraRicerca.value.trim();
 
@@ -65,6 +79,7 @@ bottoneRicerca.addEventListener('click', function () {
     barraRicerca.focus();
   }
 });
+
 
 //chiamata api
 const baseUrl = 'https://api.rawg.io/api/games?';
@@ -83,6 +98,7 @@ function chiamataAPI(query) {
     });
 }
 
+//funzione per stampare giochi
 function stampaGiochi(giochi) {
   //reference al contenitore dei risultati
   let listaRisultati = document.getElementById('listaRisultati');
@@ -105,12 +121,15 @@ function stampaGiochi(giochi) {
               <p class="card-text platform">${arrayConsole[(Math.floor(randomNumber(0, 2)))]}</p>
             </div>
             <div class="card-footer">
-              <small>€ ${randomNumber(19.99, 79.99).toFixed(2)}</small><br>
+             <small>€ ${randomNumber(19.99, 79.99).toFixed(2)}</small><br>
               <button type="button" class="acquista btn btn-primary">Acquista</button>
             </div>
       </div>`;
   }
+
   listaRisultati.insertAdjacentHTML('beforeend', context);
+
+  //cambio sfondo in base a piattaforma
   const cards = document.getElementsByClassName('card');
   for (let card of cards) {
     if (card.querySelector('.platform').innerHTML == 'Play Station') {
@@ -120,6 +139,14 @@ function stampaGiochi(giochi) {
     } else if (card.querySelector('.platform').innerHTML == 'Nintendo') {
       card.classList.add('bkg-nintendo');
     }
+
+    //aggiunta evento click acquista per le card generate
+    card.querySelector('.acquista').addEventListener('click', function () {
+      let oggetto = new Game(card.querySelector('.card-title').innerHTML, card.querySelector('.platform').innerHTML, card.querySelector('small').innerHTML);
+      carrello.push(oggetto);
+      salvaCarrello();
+      console.log(carrello);
+    });
   }
 }
 
@@ -131,4 +158,10 @@ function randomNumber(min, max) { // min and max included
 //funzione pulisci container
 function pulisci(el) {
   el.innerHTML = '';
+}
+
+//funzione localstorage
+function salvaCarrello() {
+  localStorage.clear();
+  localStorage.setItem('carrello', JSON.stringify(carrello));
 }
