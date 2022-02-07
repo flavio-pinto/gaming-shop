@@ -87,10 +87,12 @@ footer {
 }
 
 /* SEZIONE CARRELLO */
-#svuota, #acquista {
+#svuota,
+#acquista {
     width: 10em;
 }
-#paginaCarrello{
+
+#paginaCarrello {
     background: url('/assets/images/sfondo-3.jpg');
 }
 

@@ -16,6 +16,7 @@ stampaPrezzo.innerText = 'Totale Carrello: €' + totalePrezzi.toFixed(2);
 /* Funzioni */
 function stampaCarrello() {
   carrellata = '';
+  totalePrezzi = 0;
   for (let prodotto of prodottiJson) {
     totalePrezzi += parseFloat(prodotto.prezzo.substring(2));
     console.log(prodotto.prezzo.substring(2));
@@ -45,14 +46,15 @@ function stampaCarrello() {
       cards[i].classList.add('bkg-nintendo');
     }
 
-    cards[i].querySelector('.btnRemove').addEventListener('click', function(){
+    cards[i].querySelector('.btnRemove').addEventListener('click', function () {
       prodottiJson.splice(i, 1);
       console.log(prodottiJson);
       localStorage.setItem('carrello', JSON.stringify(prodottiJson));
       prodotti = localStorage.getItem('carrello');
       prodottiJson = JSON.parse(prodotti);
       stampaCarrello();
-    }); 
+      stampaPrezzo.innerText = 'Totale Carrello: €' + (totalePrezzi.toFixed(2));
+    });
   }
 }
 
@@ -63,10 +65,12 @@ clearStorage.addEventListener("click", (function () {
   window.confirm('Sicuro di voler svuotare il carrello?');
   localStorage.clear();
   listaCarrello.innerHTML = '';
+  stampaPrezzo.innerHTML = 'Totale Carrello: € 0.00';
 }));
 
 acquista.addEventListener("click", (function () {
   window.confirm('Procedi all\'acquisto?');
   localStorage.clear();
   listaCarrello.innerHTML = '';
+  stampaPrezzo.innerHTML = 'Totale Carrello: € 0.00';
 }));
