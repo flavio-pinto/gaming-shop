@@ -10,7 +10,7 @@ input {
 }
 
 body {
-    background: url('/assets/images/sfondo1.jpg');
+    background: url('../images/sfondo1.jpg');
 }
 
 nav,
@@ -93,7 +93,7 @@ footer {
 }
 
 #paginaCarrello {
-    background: url('/assets/images/sfondo-3.jpg');
+    background: url('../images/sfondo-3.jpg');
 }
 
 #contenitoreCarrello {
