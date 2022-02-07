@@ -51,8 +51,6 @@ function stampaCarrello() {
       localStorage.setItem('carrello', JSON.stringify(prodottiJson));
       prodotti = localStorage.getItem('carrello');
       prodottiJson = JSON.parse(prodotti);
-      stampaPrezzo.innerText = 'Totale Carrello: €' + totalePrezzi.toFixed(2);
-      
       stampaCarrello();
     }); 
   }
