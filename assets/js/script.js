@@ -122,7 +122,7 @@ function stampaGiochi(giochi) {
             </div>
             <div class="card-footer">
              <small>€ ${randomNumber(19.99, 79.99).toFixed(2)}</small><br>
-              <button type="button" class="acquista btn btn-primary">Acquista</button>
+              <button type="button" class="acquista btn btn-dark">Acquista</button>
             </div>
       </div>`;
   }
@@ -145,7 +145,7 @@ function stampaGiochi(giochi) {
       let oggetto = new Game(card.querySelector('.card-title').innerHTML, card.querySelector('.platform').innerHTML, card.querySelector('small').innerHTML);
       carrello.push(oggetto);
       salvaCarrello();
-      alert(`Complimenti, hai aggiunto ${oggetto.titolo} al carrello!`)
+      alert(`Complimenti, hai aggiunto ${oggetto.titolo} al carrello!`);
       console.log(carrello);
     });
   }

@@ -11,13 +11,13 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body id="paginaCarrello">
 
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark mb-5">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Welcome on <img id="logo" class="img-fluid rounded" style="width: 20em;"
-            src="./assets/images/Logo.png" alt="Logo"></a>
+        <a class="navbar-brand" href="#">Welcome on <img id="logo" class="logo2 img-fluid rounded" style="width: 20em;"
+            src="./assets/images/logo-transparent.png" alt="Logo"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -25,10 +25,10 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="carrello.html">Carrello</a>
+              <a class="nav-link active" href="carrello.html">Carrello</a>
             </li>
           </ul>
         </div>
@@ -38,18 +38,27 @@
   </header>
 
   <main style="height: 40em;">
-    <div class="container-fluid" id="appendiCarrello">
+    <div class="container-fluid rounded" id="contenitoreCarrello">
+      <div class="row mb-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-bag-heart-fill"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5Zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0ZM8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z" />
+        </svg>
+      </div>
+      <div class="row justify-content-center" id="appendiCarrello">
+
+      </div>
     </div>
     <div class="container">
       <div class="row justify-content-center">
         <div class="text-center" id="stampaPrezzoTotale">
         </div>
-    </div>
-    <div class="row justify-content-center">
-      <img id="logo" class="img-fluid rounded" style="width: 12em;"
-      src="./assets/images/Logo.png" alt="Logo">
-    </div>
-    
+      </div>
+      <div class="row justify-content-center">
+        <img id="logo" class="img-fluid rounded" style="width: 20%;" src="./assets/images/logo-transparent.png" alt="Logo">
+      </div>
+
 
     </div>
   </main>
@@ -59,7 +68,7 @@
   <footer class="py-3">
     <p class="text-center text-white">Copyright &copy; <span>FlacioGAMES</span> Tutti i diritti riservati.
       <span>FlacioGAMES</span> è un marchio creato da TheBestGroup in collaborazione con <span>Epicode School</span>.
-      <span><img class="img-fluid rounded" style="width: 10em;" src="./assets/images/Logo.png" alt="Logo"></span>
+      <span><img class="logo2 img-fluid rounded" style="width: 10em;" src="./assets/images/logo-transparent.png" alt="Logo"></span>
     </p>
   </footer>
 
